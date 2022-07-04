@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="App1.Pages.ActionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:Name="pageTitle" Text="操作" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="select" Click="select_Click">查询罚单</Button>
+            <Button x:Name="insert" Click="insert_Click">添加罚单</Button>
+            <Button x:Name="update" Click="update_Click">修改罚单</Button>
+        </StackPanel>
+    </Grid>
+</Page>

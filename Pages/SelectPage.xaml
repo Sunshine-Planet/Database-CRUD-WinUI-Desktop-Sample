@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="App1.Pages.SelectPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock x:Name="pageTitle" Text="查询" />
+            <Button x:Name="DeleteButton" Click="DeleteButton_Click">删除</Button>
+            <StackPanel x:Name="KeyWordPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ComboBox x:Name="KeyWordBox" SelectedIndex="0" SelectionChanged="KeyWordBox_SelectionChanged">
+                    <x:String>全部列出</x:String>
+                    <x:String>编号</x:String>
+                    <x:String>违章人</x:String>
+                    <x:String>处理交警</x:String>
+                    <x:String>违章日期</x:String>
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="showInfo" Click="showInfo_Click">查询</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="500">
+                <StackPanel x:Name="InfoBox" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    
+                    <!--
+            <TextBox x:Name="resultBox" Text="" IsReadOnly="True" TextWrapping="Wrap"/>
+            -->
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <HyperlinkButton Content="返回" 
+                 Click="HyperlinkButton_Click"
+                 />
+        </StackPanel>
+    </Grid>
+</Page>

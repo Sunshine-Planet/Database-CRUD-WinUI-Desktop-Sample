@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="App1.Pages.InsertPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" x:Name="Banner" Orientation="Horizontal">
+            <TextBlock x:Name="pageTitle" Text="插入数据" />
+            <Button x:Name="GenerateIdButton" Click="GenerateIdButton_Click">生成罚单编号</Button>
+            <TextBlock x:Name="showInfo" Text=""/>
+            <TextBlock x:Name="Info" Text=""/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="300">
+                <!-- Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=TemplatedParent}} -->
+                <StackPanel x:Name="InfoBox" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Top"></StackPanel>
+            
+            </ScrollViewer>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <HyperlinkButton Content="返回" 
+                 Click="HyperlinkButton_Click"
+                 />
+        </StackPanel>
+    </Grid>
+</Page>
