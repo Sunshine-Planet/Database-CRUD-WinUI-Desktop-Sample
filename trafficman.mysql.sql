@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS officer;
 CREATE TABLE officer(
     officer_name VARCHAR(20) NOT NULL   COMMENT '交警姓名' ,
     officer_id CHAR(3) NOT NULL   COMMENT '交警编号' ,
+    officer_pwd VARCHAR(20) NOT NULL   COMMENT '交警密码' ,
     PRIMARY KEY (officer_id)
 )  COMMENT = '交警队';
 
@@ -89,10 +90,10 @@ VALUES
 #SELECT * FROM punishment;
 
 INSERT INTO officer
-(officer_name, officer_id)
+(officer_name, officer_id, officer_pwd)
 VALUES
-("李四", "995"),
-("建国", "997");
+("李四", "995", "password"),
+("建国", "997", "password");
 #SELECT * FROM officer;
 
 
