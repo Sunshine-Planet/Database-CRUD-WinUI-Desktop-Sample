@@ -26,11 +26,11 @@ namespace App1.Pages
     public sealed partial class InsertPage : Page
     {
         private readonly List<string> officerList = new();
+
         public InsertPage()
         {
             this.InitializeComponent();
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand("select officer_name from officer", mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);
@@ -114,11 +114,13 @@ namespace App1.Pages
             stackPanel.Children.Add(textBlock9);
             stackPanel.Children.Add(textBlock10);
         }
+
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ActionPage));
 
         }
+
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -138,7 +140,8 @@ namespace App1.Pages
                 ((InfoBox.FindName(id) as StackPanel).Children.ElementAt(8) as ComboBox).SelectedItem + "_" +
                 ((InfoBox.FindName(id) as StackPanel).Children.ElementAt(9) as TextBox).Text;
             */
-            string sql = "insert into punishment(punishment_mastername, punishment_masterid, punishment_number, punishment_officer, punishment_date, punishment_time, punishment_location, punishment_reason, punishment_method, punishment_sign)" + 
+            string sql = "insert into punishment" +
+                "(punishment_mastername, punishment_masterid, punishment_number, punishment_officer, punishment_date, punishment_time, punishment_location, punishment_reason, punishment_method, punishment_sign)" + 
                 " values ('" +
                 ((InfoBox.FindName(id) as StackPanel).Children.ElementAt(1) as TextBox).Text + "', '" +
                 ((InfoBox.FindName(id) as StackPanel).Children.ElementAt(2) as TextBox).Text + "', '" +
@@ -152,8 +155,7 @@ namespace App1.Pages
                 ((InfoBox.FindName(id) as StackPanel).Children.ElementAt(9) as TextBox).Text +"');";
             //Info.Text = sql;
 
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new(M_str_sqlcon);
+            MySqlConnection mysqlcon = new(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand(sql, mysqlcon);
             mysqlcon.Open();
             mysqlcom.ExecuteNonQuery();
@@ -165,8 +167,7 @@ namespace App1.Pages
             string id;
             Random rd = new();
             List<string> list = new List<string>();
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new(M_str_sqlcon);
+            MySqlConnection mysqlcon = new(App.constr);
             MySqlCommand mysqlcom = new("select punishment_number from punishment", mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);

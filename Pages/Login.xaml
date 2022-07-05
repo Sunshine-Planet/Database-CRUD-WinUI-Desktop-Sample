@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="登录" />
+        <TextBlock x:Name="pageTitle" FontSize="24" Text="登录" />
         <HyperlinkButton Content="返回" 
                  Click="HyperlinkButton_Click"
                  HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
@@ -20,7 +20,7 @@
             </StackPanel>
             <TextBox x:Name="usernameBox" Header="输入用户名:" Width="500" Text="{x:Bind LoginInfo.UserName, Mode=TwoWay}"/>
             <PasswordBox x:Name="passwordBox" Header="输入密码:" Width="500"/>
-            <Button x:Name="login" Content="登录" Click="login_Click"/>
+            <Button x:Name="login" Content="登录" Click="Login_Click"/>
         <TextBlock x:Name="text" Text=""/>
 
         </StackPanel>

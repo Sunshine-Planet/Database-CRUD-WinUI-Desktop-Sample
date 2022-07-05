@@ -29,11 +29,13 @@ namespace App1.Pages
         {
             this.InitializeComponent();
         }
+
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Home));
         }
-        private void register_Click(object sender, RoutedEventArgs e)
+
+        private void Register_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password) || string.IsNullOrEmpty(repasswordBox.Password))
             {
@@ -49,8 +51,7 @@ namespace App1.Pages
             Random rd = new Random();
             List<string> list = new List<string>();
             string id;
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand("select officer_id from officer", mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);

@@ -11,19 +11,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"  x:Name="GridRow1"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0" x:Name="Banner" Orientation="Horizontal">
-            <TextBlock x:Name="pageTitle" Text="插入数据" />
+            <TextBlock x:Name="pageTitle" FontSize="24" Text="插入数据" />
             <Button x:Name="GenerateIdButton" Click="GenerateIdButton_Click">生成罚单编号</Button>
             <TextBlock x:Name="showInfo" Text=""/>
             <TextBlock x:Name="Info" Text=""/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="300">
-                <!-- Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=TemplatedParent}} -->
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"  Height="{Binding Path = ActualHeight, ElementName=GridRow1}">
+                
                 <StackPanel x:Name="InfoBox" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Top"></StackPanel>
             
             </ScrollViewer>

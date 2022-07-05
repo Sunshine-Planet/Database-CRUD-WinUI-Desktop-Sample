@@ -32,8 +32,7 @@ namespace App1.Pages
         public UpdatePage()
         {
             this.InitializeComponent();
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand("select officer_name from officer", mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);
@@ -169,8 +168,7 @@ namespace App1.Pages
                     "punishment_method = '" + ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(8) as ComboBox).SelectedItem + "', " +
                     "punishment_sign = '" + ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(9) as TextBox).Text + "' " +
                     "where punishment_number = '" + selectedPrimaryKey + "';";
-                string constr = "Server=localhost; Port=3306; Database=trafficpunishment; Uid=root; Pwd=password;";
-                MySqlConnection mycon = new MySqlConnection(constr);
+                MySqlConnection mycon = new MySqlConnection(App.constr);
                 MySqlCommand mysqlcom = new MySqlCommand(sql, mycon);
                 mycon.Open();
                 //Console.WriteLine("连接数据库成功！");
@@ -376,8 +374,7 @@ namespace App1.Pages
             }
 
             //string result = "";
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand(selectSql, mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);

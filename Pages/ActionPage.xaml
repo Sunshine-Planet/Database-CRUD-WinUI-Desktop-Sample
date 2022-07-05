@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="操作" />
+        <TextBlock x:Name="pageTitle" FontSize="24" Text="操作" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="select" Click="select_Click">查询罚单</Button>
-            <Button x:Name="insert" Click="insert_Click">添加罚单</Button>
-            <Button x:Name="update" Click="update_Click">修改罚单</Button>
+            <Button x:Name="select" Click="Select_Click" Margin="0,0,100,0">查询罚单</Button>
+            <Button x:Name="insert" Click="Insert_Click" Margin="0,0,0,0">添加罚单</Button>
+            <Button x:Name="update" Click="Update_Click" Margin="100,0,0,0">修改罚单</Button>
         </StackPanel>
     </Grid>
 </Page>

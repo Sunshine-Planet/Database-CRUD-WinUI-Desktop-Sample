@@ -11,11 +11,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" x:Name="GridRow1"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock x:Name="pageTitle" Text="修改数据" />
+            <TextBlock x:Name="pageTitle" FontSize="24" Text="修改数据" />
             <Button x:Name="UpdateButton" Click="UpdateButton_Click">更新</Button>
             <StackPanel x:Name="KeyWordPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ComboBox x:Name="KeyWordBox" SelectedIndex="0" SelectionChanged="KeyWordBox_SelectionChanged">
@@ -31,7 +31,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="500">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="{Binding Path = ActualHeight, ElementName=GridRow1}">
                 <StackPanel x:Name="InfoBox" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
 
                     <!--

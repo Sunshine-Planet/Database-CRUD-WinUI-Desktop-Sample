@@ -27,15 +27,15 @@ namespace App1.Pages
         {
             this.InitializeComponent();
         }
-        private void select_Click(object sender, RoutedEventArgs e)
+        private void Select_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SelectPage));
         }
-        private void update_Click(object sender, RoutedEventArgs e)
+        private void Update_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(UpdatePage));
         }
-        private void insert_Click(object sender, RoutedEventArgs e)
+        private void Insert_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(InsertPage));
         }

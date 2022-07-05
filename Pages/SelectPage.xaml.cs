@@ -31,14 +31,17 @@ namespace App1.Pages
         private static bool lineIsSelected = false;
         private static string selectSql = "";
         //private static bool isWriten = false;
+
         public SelectPage()
         {
             this.InitializeComponent();
         }
+
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ActionPage));
         }
+
         private void KeyWordBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
@@ -124,12 +127,12 @@ namespace App1.Pages
 
         }
 
+        /*
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if(lineIsSelected == true)
             {
-                string constr = "Server=localhost; Port=3306; Database=trafficpunishment; Uid=root; Pwd=password;";
-                MySqlConnection mycon = new MySqlConnection(constr);
+                MySqlConnection mycon = new MySqlConnection(App.constr);
                 MySqlCommand mysqlcom = new MySqlCommand("delete from punishment where punishment_number = '"+ selectedPrimaryKey + "';", mycon);
                 mycon.Open();
                 //Console.WriteLine("连接数据库成功！");
@@ -140,6 +143,8 @@ namespace App1.Pages
                 InfoBox.Children.Remove(InfoBox.FindName(selectedPrimaryKey) as StackPanel);
             }
         }
+        */
+
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -333,8 +338,7 @@ namespace App1.Pages
             }
 
             //string result = "";
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand(selectSql, mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);
@@ -359,89 +363,104 @@ namespace App1.Pages
                 //radioButtons.Items.Add(radioButton);
                 TextBox textBox1 = new TextBox
                 {
-                    Text = mysqlread.GetString(1)
+                    Text = mysqlread.GetString(1),
+                    Width = 60,
+                    IsReadOnly = true
                 };
-                textBox1.Width = 60;
                 TextBox textBox2 = new TextBox
                 {
                     Text = mysqlread.GetString(2)
                 };
                 textBox2.Width = 120;
+                textBox2.IsReadOnly = true;
                 TextBox textBox3 = new TextBox
                 {
-                    Text = mysqlread.GetString(3)
+                    Text = mysqlread.GetString(3),
+                    Width = 100,
+                    IsReadOnly = true
                 };
-                textBox3.Width = 100;
                 TextBox textBox4 = new TextBox
                 {
-                    Text = mysqlread.GetString(4)
+                    Text = mysqlread.GetString(4),
+                    Width = 80,
+                    IsReadOnly = true
                 };
-                textBox4.Width = 80;
                 TextBox textBox5 = new TextBox
                 {
                     Text = mysqlread.GetString(5)
                 };
                 textBox5.Width = 110;
+                textBox5.IsReadOnly = true;
                 TextBox textBox6 = new TextBox
                 {
-                    Text = mysqlread.GetString(6)
+                    Text = mysqlread.GetString(6),
+                    Width = 100,
+                    IsReadOnly = true
                 };
-                textBox6.Width = 100;
                 TextBox textBox7 = new TextBox
                 {
-                    Text = mysqlread.GetString(7)
+                    Text = mysqlread.GetString(7),
+                    Width = 80,
+                    IsReadOnly = true
                 };
-                textBox7.Width = 80;
                 TextBox textBox8 = new TextBox
                 {
-                    Text = mysqlread.GetString(8)
+                    Text = mysqlread.GetString(8),
+                    Width = 80,
+                    IsReadOnly = true
                 };
-                textBox8.Width = 80;
                 TextBox textBox9 = new TextBox
                 {
-                    Text = mysqlread.GetDateTime(9).ToString("d")
+                    Text = mysqlread.GetDateTime(9).ToString("d"),
+                    Width = 150,
+                    IsReadOnly = true
                 };
-                textBox9.Width = 150;
                 TextBox textBox10 = new TextBox
                 {
-                    Text = mysqlread.GetDateTime(10).ToString("d")
+                    Text = mysqlread.GetDateTime(10).ToString("d"),
+                    Width = 150,
+                    IsReadOnly = true
                 };
-                textBox10.Width = 150;
                 TextBox textBox11 = new TextBox
                 {
-                    Text = mysqlread.GetTimeSpan(11) +""
+                    Text = mysqlread.GetTimeSpan(11) + "",
+                    Width = 100,
+                    IsReadOnly = true
                 };
-                textBox11.Width = 100;
                 TextBox textBox12 = new TextBox
                 {
-                    Text = mysqlread.GetString(12)
+                    Text = mysqlread.GetString(12),
+                    Width = 100,
+                    IsReadOnly = true
                 };
-                textBox12.Width = 100;
                 TextBox textBox13 = new TextBox
                 {
-                    Text = mysqlread.GetString(13)
+                    Text = mysqlread.GetString(13),
+                    Width = 120
                 };
-                textBox13.Width = 120;
                 TextBox textBox14 = new TextBox
                 {
-                    Text = mysqlread.GetString(14)
+                    Text = mysqlread.GetString(14),
+                    Width = 50,
+                    IsReadOnly = true
                 };
-                textBox14.Width = 50;
                 TextBox textBox15 = new TextBox
                 {
-                    Text = mysqlread.GetString(15)
+                    Text = mysqlread.GetString(15),
+                    Width = 50,
+                    IsReadOnly = true
                 };
-                textBox15.Width = 50;
                 TextBox textBox16 = new TextBox
                 {
-                    Text = mysqlread.GetString(16)
+                    Text = mysqlread.GetString(16),
+                    Width = 50,
+                    IsReadOnly = true
                 };
-                textBox16.Width = 50;
                 TextBox textBox17 = new TextBox
                 {
-                    Text = mysqlread.GetString(17)
+                    Text = mysqlread.GetString(17),
+                    Width = 50
                 };
-                textBox17.Width = 50;
 
                 stackPanel.Children.Add(radioButton);
                 stackPanel.Children.Add(textBox1);
@@ -465,15 +484,15 @@ namespace App1.Pages
 
             }
             mysqlcon.Close();
-                //TextBlock textBlock = new TextBlock();
-                //textBlock.Text = result;
-                //textBlock.FontSize = 24;
-                //textBlock.FontStyle = Windows.UI.Text.FontStyle.Italic;
-                //textBlock.CharacterSpacing = 200;
-                //textBlock.Width = 300;
-                // Add the TextBox to the visual tree.
-                //InfoBox.Children.Add(textBlock);
-                //resultBox.Text = result;
+            //TextBlock textBlock = new TextBlock();
+            //textBlock.Text = result;
+            //textBlock.FontSize = 24;
+            //textBlock.FontStyle = Windows.UI.Text.FontStyle.Italic;
+            //textBlock.CharacterSpacing = 200;
+            //textBlock.Width = 300;
+            // Add the TextBox to the visual tree.
+            //InfoBox.Children.Add(textBlock);
+            //resultBox.Text = result;
             
         }
 

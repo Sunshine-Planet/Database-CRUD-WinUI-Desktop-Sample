@@ -28,17 +28,20 @@ namespace App1.Pages
     /// </summary>
     public sealed partial class Login : Page
     {
+        public LoginInfoViewModels LoginInfo { get; set; }
+
         public Login()
         {
             this.InitializeComponent();
             LoginInfo = new LoginInfoViewModels();
         }
-        public LoginInfoViewModels LoginInfo { get; set; }
+
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Home));
         }
-        private void login_Click(object sender, RoutedEventArgs e)
+
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             //string result = "";
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
@@ -49,8 +52,7 @@ namespace App1.Pages
             }
             string username = usernameBox.Text;
             string password = passwordBox.Password;
-            string M_str_sqlcon = "server=localhost;user id=root;password=password;database=trafficpunishment";
-            MySqlConnection mysqlcon = new MySqlConnection(M_str_sqlcon);
+            MySqlConnection mysqlcon = new MySqlConnection(App.constr);
             MySqlCommand mysqlcom = new MySqlCommand("select officer_name, officer_pwd from officer", mysqlcon);
             mysqlcon.Open();
             MySqlDataReader mysqlread = mysqlcom.ExecuteReader(CommandBehavior.CloseConnection);

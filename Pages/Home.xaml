@@ -9,12 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="交通违章处罚系统" />
+        <TextBlock x:Name="pageTitle" FontSize="24" Text="交通违章处罚系统" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!--
             <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-            <Button x:Name="login" Click="login_Click">登录</Button>
-            <Button x:Name="register" Click="register_Click">注册</Button>
+            -->
+            <Button x:Name="login" Margin="0,0,50,0" Click="Login_Click">登录</Button>
+            <Button x:Name="register" Click="Register_Click">注册</Button>
+            <!--
             <Button x:Name="tmp" Click="tmp_Click">TMP</Button>
+            -->
         </StackPanel>
     </Grid>
 </Page>

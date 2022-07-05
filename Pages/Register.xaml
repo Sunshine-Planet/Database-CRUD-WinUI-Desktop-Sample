@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="注册" />
+        <TextBlock x:Name="pageTitle" FontSize="24" Text="注册" />
         <HyperlinkButton Content="返回" 
                  Click="HyperlinkButton_Click"
                  HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
@@ -17,7 +17,7 @@
             <TextBox x:Name="usernameBox" Header="输入用户名:" Width="300"/>
             <PasswordBox x:Name="passwordBox" Header="输入密码:" Width="300"/>
             <PasswordBox x:Name="repasswordBox" Header="再次输入密码:" Width="300"/>
-            <Button x:Name="registerBtn" Content="注册" Click="register_Click" />
+            <Button x:Name="registerBtn" Content="注册" Click="Register_Click" />
             <TextBlock x:Name="text" Text=""/>
         </StackPanel>
     </Grid>

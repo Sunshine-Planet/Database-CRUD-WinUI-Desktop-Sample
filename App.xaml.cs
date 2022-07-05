@@ -30,6 +30,7 @@ namespace App1
         public static string flag = "false";
         public static bool isLogined = false;
 
+        public static string constr = "Server=localhost; Port=3306; Database=trafficpunishment; Uid=root; Pwd=password;";
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

@@ -9,15 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
 
-    <Grid>
+    <Grid x:Name="MyGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" x:Name="GridRow1"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock x:Name="pageTitle" Text="查询" />
-            <Button x:Name="DeleteButton" Click="DeleteButton_Click">删除</Button>
+            <TextBlock x:Name="pageTitle" FontSize="24" Text="查询" />
             <StackPanel x:Name="KeyWordPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ComboBox x:Name="KeyWordBox" SelectedIndex="0" SelectionChanged="KeyWordBox_SelectionChanged">
                     <x:String>全部列出</x:String>
@@ -30,14 +29,9 @@
             <Button x:Name="showInfo" Click="showInfo_Click">查询</Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="1">
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="500">
-                <StackPanel x:Name="InfoBox" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                    
-                    <!--
-            <TextBox x:Name="resultBox" Text="" IsReadOnly="True" TextWrapping="Wrap"/>
-            -->
-                </StackPanel>
+        <StackPanel Grid.Row="1" x:Name="st1" Height="auto">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="{Binding Path = ActualHeight, ElementName=GridRow1}">
+                <StackPanel x:Name="InfoBox" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top"></StackPanel>
             </ScrollViewer>
         </StackPanel>
 

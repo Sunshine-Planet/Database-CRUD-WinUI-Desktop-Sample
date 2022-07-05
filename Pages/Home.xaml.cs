@@ -32,25 +32,33 @@ namespace App1
         {
             this.InitializeComponent();
         }
+
+        /*
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             if (App.isLogined == false)
             {
                 App.flag = "ture";
             }
-            myButton.Content = App.flag;
+            //myButton.Content = App.flag;
         }
-        private void login_Click(object sender, RoutedEventArgs e)
+        */
+
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Login));
         }
-        private void register_Click(object sender, RoutedEventArgs e)
+
+        private void Register_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Register));
         }
+
+        /*
         private void tmp_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ActionPage));
         }
+        */
     }
 }
