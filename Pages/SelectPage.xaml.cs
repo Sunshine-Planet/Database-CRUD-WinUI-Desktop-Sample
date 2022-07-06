@@ -27,8 +27,8 @@ namespace App1.Pages
     /// </summary>
     public sealed partial class SelectPage : Page
     {
-        private static string selectedPrimaryKey = "";
-        private static bool lineIsSelected = false;
+        //private static string selectedPrimaryKey = "";
+        //private static bool lineIsSelected = false;
         private static string selectSql = "";
         //private static bool isWriten = false;
 
@@ -148,8 +148,8 @@ namespace App1.Pages
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            selectedPrimaryKey = rb.Content as string;
-            lineIsSelected = true;
+            //selectedPrimaryKey = rb.Content as string;
+            //lineIsSelected = true;
         }
 
         private void showInfo_Click(object sender, RoutedEventArgs e)

@@ -17,6 +17,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock x:Name="pageTitle" FontSize="24" Text="修改数据" />
             <Button x:Name="UpdateButton" Click="UpdateButton_Click">更新</Button>
+            <Button x:Name="DeleteButton" Click="DeleteButton_Click">删除</Button>
             <StackPanel x:Name="KeyWordPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ComboBox x:Name="KeyWordBox" SelectedIndex="0" SelectionChanged="KeyWordBox_SelectionChanged">
                     <x:String>全部列出</x:String>
@@ -26,7 +27,7 @@
                     <x:String>违章日期</x:String>
                 </ComboBox>
             </StackPanel>
-            <Button x:Name="showInfo" Click="showInfo_Click">查询</Button>
+            <Button x:Name="showInfo" Click="ShowInfo_Click">查询</Button>
             <TextBlock x:Name="Info" Text=""/>
         </StackPanel>
 

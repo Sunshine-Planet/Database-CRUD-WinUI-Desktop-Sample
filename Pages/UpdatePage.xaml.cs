@@ -49,18 +49,19 @@ namespace App1.Pages
         private void KeyWordBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //更换搜索关键词后取消勾选, 且关闭修改
-            if(lineIsSelected == true)
+            if (lineIsSelected == true)
             {
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(0) as RadioButton).IsChecked = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(1) as TextBox).IsReadOnly = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(2) as TextBox).IsReadOnly = true;
-                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEditable = false;
+                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(4) as CalendarDatePicker).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(5) as TimePicker).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(6) as TextBox).IsReadOnly = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(7) as TextBox).IsReadOnly = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(8) as ComboBox).IsEditable = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(9) as TextBox).IsReadOnly = true;
+                Info.Text = "";
             }
 
             //初始化主键值
@@ -186,6 +187,26 @@ namespace App1.Pages
             }
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (lineIsSelected == true)
+            {
+                MySqlConnection mycon = new MySqlConnection(App.constr);
+                MySqlCommand mysqlcom = new MySqlCommand("delete from punishment where punishment_number = '" + selectedPrimaryKey + "';", mycon);
+                mycon.Open();
+                //Console.WriteLine("连接数据库成功！");
+                //showInfo.Content = mysqlcom.ExecuteNonQuery();
+                mycon.Close();
+                lineIsSelected = false;
+                //showInfo.Content = App.selectedPrimaryKey;
+                InfoBox.Children.Remove(InfoBox.FindName(selectedPrimaryKey) as StackPanel);
+                Info.Text = "罚单 (编号: " + selectedPrimaryKey + ") 删除成功";
+            }
+            else
+            {
+                Info.Text = "请选择待删除罚单";
+            }
+        }
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -193,7 +214,7 @@ namespace App1.Pages
             {
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(1) as TextBox).IsReadOnly = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(2) as TextBox).IsReadOnly = true;
-                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEditable = false;
+                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(4) as CalendarDatePicker).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(5) as TimePicker).IsEnabled = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(6) as TextBox).IsReadOnly = true;
@@ -203,7 +224,7 @@ namespace App1.Pages
                 selectedPrimaryKey = rb.Content as string;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(1) as TextBox).IsReadOnly = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(2) as TextBox).IsReadOnly = false;
-                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEditable = true;
+                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(4) as CalendarDatePicker).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(5) as TimePicker).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(6) as TextBox).IsReadOnly = false;
@@ -216,7 +237,7 @@ namespace App1.Pages
                 selectedPrimaryKey = rb.Content as string;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(1) as TextBox).IsReadOnly = false;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(2) as TextBox).IsReadOnly = false;
-                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEditable = true;
+                ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(3) as ComboBox).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(4) as CalendarDatePicker).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(5) as TimePicker).IsEnabled = true;
                 ((InfoBox.FindName(selectedPrimaryKey) as StackPanel).Children.ElementAt(6) as TextBox).IsReadOnly = false;
@@ -229,8 +250,10 @@ namespace App1.Pages
 
         }
 
-        private void showInfo_Click(object sender, RoutedEventArgs e)
+        private void ShowInfo_Click(object sender, RoutedEventArgs e)
         {
+            lineIsSelected = false;
+            selectedPrimaryKey = "";
             Info.Text = "";
             InfoBox.Children.Clear();
             //InfoBox.Children.Remove(showInfo);
@@ -408,7 +431,7 @@ namespace App1.Pages
                 ComboBox comboBox3 = new()
                 {
                     Width = 100,
-                    IsEditable = false
+                    IsEnabled = false
                 };
                 for (int i = 0; i < officerList.Count; i++)
                 {
